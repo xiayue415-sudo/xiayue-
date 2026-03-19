@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PM 提示词工坊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Nunito"', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              pop: {
+                bg: '#FFFBF0', // Cream
+                text: '#4c1d95', // Deep Purple
+                purple: '#8B5CF6',
+                pink: '#FF85A1',
+                mint: '#6EE7B7',
+                yellow: '#FDE047',
+                blue: '#60A5FA',
+              }
+            },
+            boxShadow: {
+              'pop': '4px 4px 0px 0px rgba(76, 29, 149, 0.1)',
+              'pop-hover': '6px 6px 0px 0px rgba(76, 29, 149, 0.15)',
+              'pop-active': '2px 2px 0px 0px rgba(76, 29, 149, 0.1)',
+              'inner-light': 'inset 0 2px 4px 0 rgba(255, 255, 255, 0.5)',
+            },
+            animation: {
+              'jelly': 'jelly 0.6s both',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              jelly: {
+                '0%, 100%': { transform: 'scale(1, 1)' },
+                '25%': { transform: 'scale(0.95, 1.05)' },
+                '50%': { transform: 'scale(1.05, 0.95)' },
+                '75%': { transform: 'scale(0.95, 1.05)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Nunito', sans-serif;
+        color: #4c1d95;
+        background-color: #FFFBF0;
+        background-image: radial-gradient(#E5E7EB 1px, transparent 1px);
+        background-size: 24px 24px;
+        min-height: 100vh;
+      }
+      
+      /* Cute Scrollbar */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #FF85A1;
+        border-radius: 99px;
+        border: 3px solid #FFFBF0;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #F43F5E;
+      }
+      
+      .btn-pop {
+        transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .btn-pop:hover {
+        transform: translateY(-2px);
+        box-shadow: 6px 6px 0px 0px rgba(76, 29, 149, 0.15);
+      }
+      .btn-pop:active {
+        transform: translateY(2px) scale(0.98);
+        box-shadow: 2px 2px 0px 0px rgba(76, 29, 149, 0.1);
+      }
+
+      /* Blob decorations */
+      .blob {
+        position: absolute;
+        filter: blur(40px);
+        z-index: -1;
+        opacity: 0.6;
+        animation: float 8s ease-in-out infinite;
+      }
+      /* Skeleton Animation */
+      @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+      .skeleton {
+        background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite linear;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.37.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
